@@ -7,7 +7,9 @@
         <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/layout/activity_main.xml" value="0.25277777777777777" />
         <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/layout/activity_news.xml" value="0.275" />
         <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/layout/fragment_article.xml" value="0.2609375" />
+        <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/layout/fragment_breaking_news.xml" value="0.2109375" />
         <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/layout/fragment_saved_news.xml" value="0.275" />
+        <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/layout/fragment_search_news.xml" value="0.2109375" />
         <entry key="..\:/Users/Adam/NewsApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2515625" />
       </map>
     </option>
