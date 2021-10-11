@@ -1,6 +1,6 @@
 package com.example.newsapp.db
 
-import Article
+import com.example.newsapp.models.Article
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
