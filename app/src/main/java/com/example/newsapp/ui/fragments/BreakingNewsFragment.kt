@@ -2,7 +2,9 @@ package com.example.newsapp.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,17 +19,19 @@ import com.example.newsapp.util.Resource
 
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
+    private val TAG = "BreakingNewsFragment"
     lateinit var viewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
+
     lateinit var rvBreakingNews: RecyclerView
     lateinit var paginationProgressBar: ProgressBar
 
-    private val TAG = "BreakingNewsFragment"
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as NewsActivity).viewModel
         rvBreakingNews = view.findViewById(R.id.rvBreakingNews)
         paginationProgressBar = view.findViewById(R.id.paginationProgressBar)
-        viewModel = (activity as NewsActivity).viewModel
         setUpRecyclerView()
 
         viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->

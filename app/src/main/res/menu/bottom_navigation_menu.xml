@@ -5,11 +5,13 @@
         android:icon="@drawable/ic_breaking_news"
         android:title="@string/breaking_news" />
     <item
-        android:id="@+id/searchNewsFragment"
+        android:id="@+id/savedNewsFragment"
+
         android:icon="@drawable/ic_favorite"
         android:title="@string/saved_news" />
     <item
-        android:id="@+id/savedNewsFragment"
+        android:id="@+id/searchNewsFragment"
+
         android:icon="@drawable/ic_all_news"
         android:title="@string/search_news" />
 </menu>
