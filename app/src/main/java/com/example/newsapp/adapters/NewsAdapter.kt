@@ -13,20 +13,28 @@ import com.example.newsapp.R
 import com.example.newsapp.models.Article
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
+
     inner class ArticleViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val ivArticleImage: ImageView
         val tvSource: TextView
         val tvTitle: TextView
         val tvDescription: TextView
-        val tvPublischedAt: TextView
+        val tvPublishedAt: TextView
 
         init {
             ivArticleImage = view.findViewById(R.id.ivArticleImage)
             tvSource = view.findViewById(R.id.tvSource)
             tvTitle = view.findViewById(R.id.tvTitle)
             tvDescription = view.findViewById(R.id.tvDescription)
-            tvPublischedAt = view.findViewById(R.id.tvPublishedAt)
+            tvPublishedAt = view.findViewById(R.id.tvPublishedAt)
         }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
+        return ArticleViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_article_preview, parent, false)
+        )
     }
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>() {
@@ -40,37 +48,28 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
     }
     val differ = AsyncListDiffer(this, differCallback)
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
-        return ArticleViewHolder(
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_article_preview, parent, false)
-        )
-    }
-
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         Glide.with(holder.itemView).load(article.urlToImage).into(holder.ivArticleImage)
         holder.tvSource.text = article.source.name
         holder.tvTitle.text = article.title
         holder.tvDescription.text = article.description
-        holder.tvPublischedAt.text = article.publishedAt
-        View.OnClickListener {
-            onItemClickListener?.let { it(article) }
+        holder.tvPublishedAt.text = article.publishedAt
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.let {
+                it(article)
+            }
         }
-        //czy to działa tak samo ?
-//        setOnItemClickListener {
-//            onItemClickListener?.let { it(article) }
-//        }
-
-    }
-
-    private var onItemClickListener: ((Article) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (Article) -> Unit) {
-        onItemClickListener = listener
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    //CStuff
+    private var onItemClickListener: ((Article) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Article) -> Unit) {
+        onItemClickListener = listener
     }
 }
