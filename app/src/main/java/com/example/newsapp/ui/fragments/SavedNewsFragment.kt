@@ -58,12 +58,11 @@ class SavedNewsFragment : Fragment(R.layout.fragment_saved_news) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
                 val article = newsAdapter.differ.currentList[position]
-                viewModel.delateArticle(article)
-                Snackbar.make(view, "Successfuly deleted article", Snackbar.LENGTH_LONG).apply {
+                viewModel.deleteArticle(article)
+                Snackbar.make(view, "Successfully deleted article", Snackbar.LENGTH_LONG).apply {
                     setAction("undo", View.OnClickListener {
                         viewModel.saveArticle(article)
                     })
-
                     show()
                 }
             }

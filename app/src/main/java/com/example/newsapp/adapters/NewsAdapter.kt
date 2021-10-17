@@ -51,7 +51,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
         val article = differ.currentList[position]
         Glide.with(holder.itemView).load(article.urlToImage).into(holder.ivArticleImage)
-        holder.tvSource.text = article.source.name
+        holder.tvSource.text = article.source?.name
         holder.tvTitle.text = article.title
         holder.tvDescription.text = article.description
         holder.tvPublishedAt.text = article.publishedAt

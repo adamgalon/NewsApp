@@ -6,13 +6,11 @@ import com.example.newsapp.models.Article
 import com.example.newsapp.models.NewsResponse
 import retrofit2.Response
 
-class NewsRepository(val db: ArticleDatabase) {
+class NewsRepository(private val db: ArticleDatabase) {
 
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int): Response<NewsResponse> {
         return RetrofitInstance.api.getBrakingNews(countryCode, pageNumber)
     }
-
-
     suspend fun getSearchNews(searchQuery: String, pageNumber: Int) =
         RetrofitInstance.api.searchForNews(searchQuery, pageNumber)
 
